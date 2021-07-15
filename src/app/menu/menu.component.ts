@@ -57,8 +57,8 @@ export class MenuComponent implements OnInit {
     ]
 };
   onSelect(dish: Dish) {
-    // this.selectedDish = dish;
-    alert(dish.name);
+    this.selectedDish = dish;
+    // alert(dish.name);
   }
 
 }

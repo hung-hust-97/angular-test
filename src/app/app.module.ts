@@ -13,9 +13,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
+import { DishDetailComponent } from './dish-detail/dish-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, DishdetailComponent],
+  declarations: [AppComponent, MenuComponent, DishdetailComponent, DishDetailComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
