@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import '_variables';
 @import '../node_modules/font-awesome/scss/font-awesome';
 
 $lt-gray: #ddd;
@@ -15,6 +14,7 @@ $accent-color:         #FFC107;
 $primary-text-color:   #212121;
 $secondary-text-color: #757575;
 $divider-color:        #BDBDBD;
+$background-moredark: #4527A0;
 
 @mixin zero-margin($pad-up-down, $pad-left-right) {
     margin: 0px auto;
@@ -42,4 +42,21 @@ body {
 
 .flex-spacer {
   flex: 1 1 auto;
+}
+.active {
+  background: $background-moredark;
+}
+.flex-spacer{
+  flex: 1 1 auto;
+}
+.full-width {
+  width: 95%
+}
+
+.half-width {
+  width: 45%
+}
+
+.form-size {
+  width: 75%
 }
