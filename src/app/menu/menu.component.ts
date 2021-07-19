@@ -12,11 +12,14 @@ export class MenuComponent implements OnInit {
   constructor(private dishService:DishService) {}
 
   ngOnInit() {
-    this.dishes = this.dishService.getDishes();
+    // this.dishService.getDishes()
+    // .then(dishes => this.dishes = dishes);
+    this.dishService.getDishes().subscribe(dishes => this.dishes = dishes);
+
   }
   dishes: Dish[];
   selectedDish: Dish = {
-    id: '0',
+    id: "0",
     name: 'Uthappizza',
     image: '/assets/images/uthappizza.png',
     category: 'mains',

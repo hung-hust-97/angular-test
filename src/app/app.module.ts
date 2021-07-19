@@ -30,6 +30,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import {MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [AppComponent, MenuComponent, DishDetailComponent, HeaderComponent, FooterComponent, AboutComponent, HomeComponent, ContactComponent, LoginComponent],
   imports: [
@@ -50,6 +51,8 @@ import {MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    MatProgressSpinnerModule,
+    
   ],
   providers: [DishService, PromotionService, LeaderService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
