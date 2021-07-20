@@ -26,12 +26,11 @@
           <span class="fa fa-chevron-right fa-lg"></span>
         </button>
       </mat-card-actions>
-      
+  
     </mat-card>
-
   </div>
-  <div fxFlex="40">
-    <mat-list *ngIf="dish">
+  <div fxFlex="40" *ngIf="dish">
+    <mat-list >
       <h3>Comments</h3>
       <mat-list-item *ngFor="let comment of dish.comments">
         <h4 matLine>{{comment.comment}}</h4>
@@ -41,8 +40,63 @@
         </p>
       </mat-list-item>
     </mat-list>
-  </div>
+    <form
+      novalidate
+      #fform="ngForm"
+      [formGroup]="commentForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <p>
+        <mat-form-field class="full-width">
+          <input
+            type="text"
+            matInput
+            formControlName="author"
+            placeholder="Name"
+            required
+          />
+          <mat-error *ngIf="formErrors.author">{{
+            formErrors.author
+          }}</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-slider
+          class="half-width"
+          max="5"
+          min="0"
+          step="1"
+          thumbLabel="true"
+          [tickInterval]="1"
+          formControlName="rating"
+        >
+        </mat-slider>
+      </p>
+      <p>
+        <mat-form-field class="full-width">
+          <textarea
+            matInput
+            placeholder="Your Comment"
+            formControlName="comment"
+            rows="5"
+          ></textarea>
+          <mat-error *ngIf="formErrors.comment">{{
+            formErrors.comment
+          }}</mat-error>
+        </mat-form-field>
+      </p>
 
+      <button
+        [disabled]="commentForm.invalid"
+        mat-button
+        type="submit"
+        class="background-primary text-floral-white"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+  
 
   <div [hidden]="dish">
     <mat-spinner></mat-spinner>
