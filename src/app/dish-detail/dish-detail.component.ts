@@ -5,17 +5,25 @@ import { Location } from '@angular/common';
 import { DishService } from '../service/dish.service';
 import { switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { visibility, flyInOut, expand } from '../animations/app.animation';
 @Component({
   selector: 'app-dish-detail',
   templateUrl: './dish-detail.component.html',
   styleUrls: ['./dish-detail.component.scss'],
+  animations: [
+    visibility(),
+    flyInOut(),
+    expand(),
+  ]
 })
 export class DishDetailComponent implements OnInit {
   dish: Dish;
   dishIds: string[];
   prev: string;
+  visibility = 'shown';
   next: string;
+  errMess : string;
+  dishcopy : Dish;
   commentForm: FormGroup;
   @ViewChild('fform') commentFormDirective: any;
   constructor(
@@ -32,13 +40,15 @@ export class DishDetailComponent implements OnInit {
 
     this.router.params
       .pipe(
-        switchMap((params: Params) => this.dishService.getDish(params['id']))
+        switchMap((params: Params) => { this.visibility = 'hidden'; return this.dishService.getDish(params['id']); })
       )
       .subscribe((dish) => {
         this.dish = dish;
+        this.dishcopy = dish;
         this.setPrevNext(dish.id);
+        this.visibility = 'shown';
 
-      });
+      }, errmess => this.errMess = <any>errmess);
   }
 
   setPrevNext(dishId : string) {

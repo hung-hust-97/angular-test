@@ -31,8 +31,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import {MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HighlightDirective } from './directives/highlight.directive';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 @NgModule({
-  declarations: [AppComponent, MenuComponent, DishDetailComponent, HeaderComponent, FooterComponent, AboutComponent, HomeComponent, ContactComponent, LoginComponent],
+  declarations: [AppComponent, MenuComponent, DishDetailComponent, HeaderComponent, FooterComponent, AboutComponent, HomeComponent, ContactComponent, LoginComponent, HighlightDirective],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -52,7 +54,7 @@ import {MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatInputModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
-    
+    HttpClientModule
   ],
   providers: [DishService, PromotionService, LeaderService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,16 +1,24 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { Feedback, ContactType } from '../shared/feedback';
+import { flyInOut, expand } from '../animations/app.animation';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
+  host: {
+    '[@flyInOut]': "true", 
+    'style': 'display: block'
+  },
+  animations: [
+    flyInOut(),
+    expand(),
+  ]
 })
 export class ContactComponent implements OnInit {
 
-  feedbackForm: FormGroup;
-  feedback: Feedback;
+  feedbackForm!: FormGroup;
+  feedback!: Feedback;
   contactType = ContactType;
   @ViewChild('fform') feedbackFormDirective;
 
@@ -79,7 +87,7 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
-  this.feedbackFormDirective.resetForm();
+    this.feedbackFormDirective.resetForm();
   }
   onValueChanged(data?: any) {
     if (!this.feedbackForm) { return; }
