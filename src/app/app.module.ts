@@ -20,19 +20,21 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import { MatCheckboxModule} from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LeaderService } from './service/leader.service';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import {MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HighlightDirective } from './directives/highlight.directive';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { baseURL } from './shared/baseurl';
+
 @NgModule({
   declarations: [AppComponent, MenuComponent, DishDetailComponent, HeaderComponent, FooterComponent, AboutComponent, HomeComponent, ContactComponent, LoginComponent, HighlightDirective],
   imports: [
@@ -56,11 +58,11 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     MatProgressSpinnerModule,
     HttpClientModule
   ],
-  providers: [DishService, PromotionService, LeaderService],
+  providers: [DishService, PromotionService, LeaderService, HeaderComponent, { provide: 'baseURL', useValue: baseURL }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
   entryComponents: [
     LoginComponent
-],
+  ],
 })
-export class AppModule {}
+export class AppModule { }
